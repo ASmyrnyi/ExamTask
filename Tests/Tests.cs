@@ -38,5 +38,15 @@ namespace Tests
             // Assert
             Assert.False(result);
         }
+
+        [Fact]
+        public void DriverMethodsLogin_СheckPath_PathCorrect()
+        {
+            //Arrange + Act
+            var result = DriverMethods.Login();
+
+            // Assert
+            Assert.Equal("Tests", DriverMethods.Path);
+        }
     }
 }

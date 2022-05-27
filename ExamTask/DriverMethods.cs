@@ -8,14 +8,13 @@ namespace ExamTask
     {
         public static string Email { get; set; } = "";
         public static string Password { get; set; } = "";
+        public static string Path { get; } = Environment.CurrentDirectory.Contains("ExamTask")
+                                                  ? "ExamTask"
+                                                  : "Tests";
 
         public static bool Login()
         {
-            var currentDirectory = Environment.CurrentDirectory.Contains("ExamTask")
-                ? "ExamTask"
-                : "Tests";
-
-            var path = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.IndexOf(currentDirectory));
+            var path = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.IndexOf(Path));
             IWebDriver driver = new ChromeDriver(path);
             driver.Navigate().GoToUrl("https://accounts.ukr.net/");
 
